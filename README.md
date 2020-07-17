@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - department: number
 
 ## Adding new employee:
-![](http://g.recordit.co/nK3Ft0LviE.gif)
+![](http://g.recordit.co/wF9DMLolER.gif)
 
 ## Edit current employee:
 ![](http://g.recordit.co/c2M9QdfWsx.gif)
