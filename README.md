@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Make a task that will implement next actions (using Material-ui, React and Typescript):
 1) Adding employee
 2) Remove employee
-3) Modify
+3) Editing
 
 ## Employee type:
 - id?: number
