@@ -2,41 +2,42 @@ export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
 export const REMOVE_EMPLOYEE = 'REMOVE_EMPLOYEE';
 export const UPDATE_EMPLOYEE = 'UPDATE_EMPLOYEE';
 
-type DepartmentId = number
 
-interface Department {
-  id: DepartmentId
-  name: string
-}
-
-type EmployeeId = number;
-
-export type Employee = {
+export type EmployeeItem = {
     id?: number,
     firstName: string
     lastName: string
     position: string
     employmentDate: Date
-    mentorId?: EmployeeId
-    department: DepartmentId
+    mentorId?: number
+    department: number
 }
 
 export type AddEmployeeAction = {
     type: typeof ADD_EMPLOYEE,
-    employee: Employee,
+    employee: EmployeeItem,
 }
 export type RemoveEmployeeAction = {
     type: typeof REMOVE_EMPLOYEE,
-    index: number,
+    id: number,
 };
 
 export type UpdateEmploeePayload = {
-    index: number;
-    employee: Partial<Employee>
+    id: number;
+    employee: Partial<EmployeeItem>
 };
 
+export type Employees = {
+    [key: string]: EmployeeItem,
+  }
+export type EmployeesData = {
+    employees: Employees,
+    ids: number[],
+    lastId: number,
+}
+
 export type EmployeesState = {
-    data: Employee[]
+    data: EmployeesData,
 }
 
 export type UpdateEmployeeAction = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import Input from '@material-ui/core/Input';
 
@@ -11,7 +11,7 @@ type Props = {
     required?: boolean,
 };
 
-export const InputInCell = ({
+export const InputInCell = memo(({
     id,
     type = 'text',
     placeholder,
@@ -28,4 +28,4 @@ export const InputInCell = ({
                 required={required} />
         </TableCell>
     )
-}
+})
