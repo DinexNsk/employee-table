@@ -1,3 +1,4 @@
+
 import { EmployeesState } from "./types";
 
 interface AppState {
@@ -5,5 +6,6 @@ interface AppState {
 }
 
 export const selectors = {
-    employees: (state: AppState) => state.employees.data,
+    employeesData: (state: AppState) => state.employees.data,
+    ids: (state: AppState) => state.employees.data.ids,
 };
