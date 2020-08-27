@@ -1,34 +1,36 @@
-import React from 'react';
+import React, { memo } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 
-// import styles from './EditableTableRow.module.css';
 import { IconButton } from '@material-ui/core';
+import { variantIcons, Variants } from '../utils/variantIcons';
 
 type Props = {
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
-    type?: 'submit' | 'button' | 'reset',
-    color?: 'default' | 'inherit' | 'primary' | 'secondary',
-    disabled?: boolean,
-    icon: React.ReactChild
+  onClick: () => void,
+  type?: 'submit' | 'button' | 'reset',
+  color?: 'default' | 'inherit' | 'primary' | 'secondary',
+  disabled?: boolean,
+  variant: Variants,
 };
 
-export const IconButtonInCell = ({
+export const IconButtonInCell = memo(({
   type = 'button',
   onClick,
   color = 'default',
   disabled,
-  icon,
+  variant,
 }: Props) => {
-    return (
-        <TableCell width={30}>
-            <IconButton
-              onClick={onClick}
-              type={type}
-              color={color}
-              disabled={disabled}
-            >
-              {icon}
-            </IconButton>
-          </TableCell>
-    )
-  }
+  const Icon = variantIcons[variant];
+
+  return (
+    <TableCell width={30}>
+      <IconButton
+        onClick={onClick}
+        type={type}
+        color={color}
+        disabled={disabled}
+      >
+        <Icon />
+      </IconButton>
+    </TableCell>
+  )
+});

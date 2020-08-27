@@ -1,5 +1,5 @@
 import {
-    Employee,
+    EmployeeItem,
     ADD_EMPLOYEE,
     REMOVE_EMPLOYEE,
     UPDATE_EMPLOYEE,
@@ -9,14 +9,14 @@ import {
     UpdateEmployeeAction,
 } from "./types";
 
-export const addEmployee = (employee: Employee): AddEmployeeAction => ({
+export const addEmployee = (employee: EmployeeItem): AddEmployeeAction => ({
     type: ADD_EMPLOYEE,
     employee,
 });
 
-export const removeEmployee = (index: number): RemoveEmployeeAction => ({
+export const removeEmployee = (id: number): RemoveEmployeeAction => ({
     type: REMOVE_EMPLOYEE,
-    index,
+    id,
 });
 export const updateEmployee = (payload: UpdateEmploeePayload): UpdateEmployeeAction => ({
     type: UPDATE_EMPLOYEE,

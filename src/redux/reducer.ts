@@ -18,24 +18,42 @@ export const employeesReducer = (
 ): EmployeesState => {
     switch (action.type) {
         case ADD_EMPLOYEE:
+            const id = action.employee.id || state.data.lastId + 1;
             return {
                 ...state,
-                data: [...state.data, action.employee],
+                data: {
+                    ...state.data,
+                    employees: {
+                        ...state.data.employees,
+                        [id]: action.employee,
+                    },
+                    ids: [...state.data.ids, id],
+                    lastId: id,
+                },
             }
         case REMOVE_EMPLOYEE:
+            const {[action.id]: deletedItem, ...newState} = state.data.employees;
             return {
                 ...state,
-                data: [...state.data.slice(0, action.index), ...state.data.slice(action.index + 1)],
+                data: {
+                    ...state.data,
+                    employees: newState,
+                    ids: state.data.ids.filter(el => el !== action.id),
+                },
             }
         case UPDATE_EMPLOYEE:
-            const newEmployees = [...state.data];
-            newEmployees[action.payload.index] = {
-                ...newEmployees[action.payload.index],
-                ...action.payload.employee,
-            };
             return {
                 ...state,
-                data: newEmployees,
+                data: {
+                    ...state.data,
+                    employees: {
+                        ...state.data.employees,
+                        [action.payload.id]: {
+                            ...state.data.employees[action.payload.id],
+                            ...action.payload.employee
+                        }
+                    }
+                },
             }
         default:
             return state;
